@@ -1,30 +1,60 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FF HEADSHOT PANEL</title>
+<title>FF AUTO HEADSHOT</title>
 <style>
-body{background:#0f0f0f;color:#fff;font-family:sans-serif;text-align:center;padding:20px}
-.box{background:#1a1a1a;border:2px solid #00ff88;border-radius:15px;padding:20px;margin-top:20px}
-button{background:#00ff88;color:#000;padding:12px 25px;border:none;border-radius:10px;font-weight:bold;font-size:16px;width:100%;margin:8px 0}
-h2{color:#00ff88}
-input{width:90%;padding:10px;border-radius:8px;border:none;margin:8px}
+body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:15px}
+.box{border:2px solid #00ff88;border-radius:20px;padding:20px;margin:15px 0;box-shadow:0 0 15px #00ff88}
+button{background:#00ff88;color:#000;border:none;padding:16px;width:100%;margin:10px 0;border-radius:12px;font-weight:900;font-size:17px}
+#loader{display:none;background:#111;border-radius:10px;padding:15px;margin:15px 0;border:1px solid #00ff88}
+#bar{height:20px;background:#333;border-radius:10px;overflow:hidden}
+#fill{height:100%;width:0%;background:#00ff88;transition:width 0.2s}
 </style>
 </head>
 <body>
-<h2>🔥 FF HEADSHOT BOOSTER PANEL 🔥</h2>
+<h2 style="color:#00ff88;">🔥 FF AUTO HEADSHOT 🔥</h2>
+<p style="color:#ff0055;font-weight:bold;">INJECTOR PANEL v9.0</p>
+
 <div class="box">
-<p>Device: Infinix Note 50x</p>
-<p>DPI: 411</p>
-<hr>
-<p><b>Best Sensitivity</b></p>
-<p>General: 100<br>Red Dot: 90<br>2x: 80<br>4x: 75<br>Sniper: 60</p>
-<button onclick="alert('Sensitivity Applied! Game restart karo')">APPLY SENSITIVITY</button>
-<button onclick="alert('Headshot Config Optimized!')">BOOST HEADSHOT</button>
-<button onclick="alert('Lag Fixed!')">ANTI LAG FIX</button>
+<p id="dev">Device: Infinix Note 50x</p>
+<p id="dpi">DPI: 411</p>
+<p>Status: <span id="st" style="color:red;">Not Injected</span></p>
+
+<div id="loader">
+<p id="ltxt">Injecting Aimbot...</p>
+<div id="bar"><div id="fill"></div></div>
+<p id="pct">0%</p>
 </div>
-<div class="box">
-<p>Ye 100% Safe hai, No Ban</p>
+
+<button onclick="inject()">ENABLE AUTO HEADSHOT</button>
+<button onclick="sens()">APPLY SENSITIVITY 100</button>
+<button onclick="antifunc()">ANTI BAN + ANTI LAG</button>
 </div>
+
+<div class="box"><p>✅ 100% Anti Ban | No Password</p><p>For Infinix Note 50x - Optimized</p></div>
+
+<script>
+let w=0;
+function inject(){
+ document.getElementById('loader').style.display='block';
+ w=0;
+ let i=setInterval(()=>{
+   w+=Math.floor(Math.random()*15)+5;
+   if(w>100)w=100;
+   document.getElementById('fill').style.width=w+'%';
+   document.getElementById('pct').innerText=w+'%';
+   document.getElementById('ltxt').innerText=w<40?'Bypassing Anti-Cheat...':w<80?'Injecting Headshot Module...':'Activating...';
+   if(w>=100){
+     clearInterval(i);
+     document.getElementById('st').innerHTML='<span style="color:#00ff88;">AUTO HEADSHOT ENABLED ✅</span>';
+     alert('🔥 AUTO HEADSHOT ENABLED SUCCESSFULLY! 🔥\n\nHeadshot Rate: 95%\nAim Lock: ON\nAnti Ban: ON\n\nAb Free Fire kholo aur dekho headshot hi headshot!');
+   }
+ },120);
+}
+function sens(){alert('✅ BEST SENSITIVITY APPLIED!\n\nGeneral: 100\nRed Dot: 100\n2x: 96\n4x: 92\nSniper: 78\n\nOne Shot One Kill!');}
+function antifunc(){alert('🚀 ANTI LAG + ANTI BAN ACTIVATED!\n\nCache Cleared\nPing: 20ms Fixed\nFPS: 120 Unlocked');}
+</script>
 </body>
 </html>
