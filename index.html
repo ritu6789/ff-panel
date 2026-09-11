@@ -24,11 +24,14 @@ body{background:#060606;color:#fff;font-family:Arial;text-align:center;margin:0}
 </div>
 <script>
 var K={"AXA-7392":"7392","AXA-FREE":"0000","AXA-VIP":"9999"};
-function C(){var a=document.getElementById('k').value.trim(),b=document.getElementById('p').value.trim();if(K[a]==b){document.getElementById('L').style.display='none';localStorage.setItem('axa','ok')}else{document.getElementById('e').innerText='Wrong Key/Password'}}
-if(location.search.includes('logout')){localStorage.removeItem('axa');location.href=location.pathname}
-if(localStorage.getItem('axa')=='ok'){document.getElementById('L').style.display='none'}
+function C(){var a=document.getElementById('k').value.trim();var b=document.getElementById('p').value.trim();if(K[a]&&K[a]==b){localStorage.setItem('axa','ok');document.getElementById('L').innerHTML='<h2 style=color:#00ff88>Launching FF MAX...</h2>';window.location.href="intent://#Intent;package=com.dts.freefiremax;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;end";setTimeout(()=>{location.href=location.href.split('?')[0]},2000)}else{document.getElementById('e').innerText='Wrong Key / Pass'}}
 function T(el){el.classList.toggle('active')}
-function logout(){localStorage.removeItem('axa');location.reload()}
+function logout(){localStorage.removeItem('axa');location.href=location.href.split('?')[0]+'?logout'}
+if(location.search.includes('logout')){localStorage.removeItem('axa')}
+if(localStorage.getItem('axa')=='ok'){document.getElementById('L').style.display='none'}
+
+
+
 </script>
 <div style="padding:10px">
 <h2 style="color:#00ff88">🔥 AXA PANEL V2 🔥</h2>
