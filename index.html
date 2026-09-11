@@ -1,4 +1,51 @@
+hack
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FF AUTO HEADSHOT</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial;text-align:center}
+.box{border:2px solid #00ff88;border-radius:20px;padding:15px;margin:15px}
+button{background:#00ff88;color:#000;border:none;padding:12px 20px;border-radius:10px;font-weight:bold}
+</style>
 <!-- LOGIN LOCK START -->
+<div id="loginLock" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:flex;justify-content:center;align-items:center;">
+  <div style="background:#111;border:2px solid #00ff88;padding:25px;border-radius:15px;width:85%;max-width:300px;text-align:center">
+    <h3 style="color:#00ff88">AXA PANEL LOGIN</h3>
+    <input id="k" placeholder="Enter Key" style="width:90%;padding:12px;margin:8px 0;background:#000;color:#fff;border:1px solid #333;border-radius:8px">
+    <input id="p" type="password" placeholder="Enter Password" style="width:90%;padding:12px;margin:8px 0;background:#000;color:#fff;border:1px solid #333;border-radius:8px">
+    <button onclick="check()" style="width:95%;padding:12px;background:#00ff88;border:none;border-radius:8px;font-weight:bold">LOGIN</button>
+    <p id="err" style="color:red;font-size:12px"></p>
+    <p style="font-size:11px;color:#555;margin-top:10px">Demo: AXA-1234 / 1111</p>
+  </div>
+</div>
+<script>
+const KEYS = { "AXA-1234": "1111", "AXA-FREE-01": "0000", "AXA-9999": "9999" };
+function check(){
+  let key=document.getElementById('k').value.trim();
+  let pass=document.getElementById('p').value.trim();
+  if(KEYS[key] && KEYS[key]==pass){
+    document.getElementById('loginLock').style.display='none';
+    localStorage.setItem('axa','ok');
+  } else {
+    document.getElementById('err').innerText='❌ Wrong Key/Password';
+  }
+}
+if(localStorage.getItem('axa')=='ok'){ document.getElementById('loginLock').style.display='none'; }
+</script>
+<!-- LOGIN LOCK END -->
+
+<h2 style="color:#00ff88;">🔥 FF AUTO HEADSHOT 🔥</h2>
+<p style="color:#ff0055;font-weight:bold;">INJECTOR</p>
+
+<div class="box">
+<p id="dev">Device: Infinix Note 50x</p>
+<p id="dpi">DPI: 411</p>
+<button onclick="alert('Injected!')">INJECT</button>
+</div>
+
+</body>
+</html><!-- LOGIN LOCK START -->
 <div id="loginLock" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:flex;justify-content:center;align-items:center;">
   <div style="background:#111;border:2px solid #00ff88;padding:25px;border-radius:15px;width:85%;max-width:300px;text-align:center">
     <h3 style="color:#00ff88">AXA PANEL LOGIN</h3>
