@@ -2,27 +2,64 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AXA VIP PANEL</title>
 <style>
-body{background:#000;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif}
-.box{border:2px solid #00ff7f;border-radius:20px;padding:30px;width:85%;max-width:350px;background:#0a0a0a;text-align:center}
-h1{color:#00ff7f}
-input{width:100%;padding:14px;margin:10px 0;background:#000;border:1px solid #333;color:#fff;border-radius:10px;box-sizing:border-box}
-button{width:100%;padding:14px;background:#00ff7f;border:0;border-radius:10px;font-weight:bold;font-size:16px}
+body{background:#060606;color:#fff;font-family:Arial;margin:0;display:flex;justify-content:center;align-items:center;height:100vh}
+.card{background:#111;border:1px solid #00ff88;border-radius:18px;padding:25px;width:88%;max-width:360px;text-align:center}
+h2{color:#00ff88}
+input{width:100%;padding:13px;margin:8px 0;background:#000;border:1px solid #333;color:#fff;border-radius:10px;box-sizing:border-box}
+button{width:100%;padding:13px;background:#00ff88;border:0;border-radius:10px;font-weight:bold}
+.btn{width:100%;padding:12px;margin:6px 0;background:#222;border:1px solid #333;color:#fff;border-radius:10px}
+.btn.active{background:#00ff88;color:#000}
+#L{position:fixed;top:0;left:0;width:100%;height:100%;background:#060606;display:flex;justify-content:center;align-items:center;z-index:99}
 </style>
 </head>
 <body>
-<div class="box">
-<h1>AXA VIP</h1>
-<input id="k" placeholder="Enter Key (e.g. AXA-VIP)">
+<div id="L"><div style="background:#111;border:2px solid #00ff88;border-radius:18px;padding:25px;width:85%;max-width:340px;text-align:center">
+<h2>AXA VIP</h2>
+<input id="k" placeholder="Enter Key">
 <input id="p" type="password" placeholder="Password">
-<button onclick="login()">LOGIN</button>
+<button onclick="C()">LOGIN</button>
+<p id="e" style="color:#ff4444"></p>
+</div></div>
+<div class="card" id="P" style="display:none">
+<h2>AXA VIP PANEL</h2>
+<p id="info" style="color:#888;font-size:12px"></p>
+<button class="btn" onclick="this.classList.toggle('active')">AIMBOT 100%</button>
+<button class="btn" onclick="this.classList.toggle('active')">AIM LOCK</button>
+<button class="btn" onclick="this.classList.toggle('active')">NO RECOIL</button>
+<button class="btn" onclick="this.classList.toggle('active')">ESP LINE</button>
+<button class="main-btn" onclick="alert('INJECTED!')" style="background:#00ff88;color:#000;padding:14px;width:100%;border:0;border-radius:12px;font-weight:bold;margin-top:15px">INJECT AXA VIP</button>
+<button onclick="localStorage.clear();location.reload()" style="background:none;border:none;color:#666;margin-top:15px">Logout</button>
 </div>
 <script>
-function login(){
-if(document.getElementById('k').value=='AXA-VIP' && document.getElementById('p').value=='9999'){
-localStorage.setItem('axa','ok');
-location.href='panel.html';
-}else{alert('Wrong Key or Password');}
+const KEYS = {
+  "AXA-VIP": { pass: "9999", expire: "2026-12-31" },
+  "AXA-30DAYS": { pass: "1234", expire: "2026-10-12" },
+  "AXA-7DAYS": { pass: "7777", expire: "2026-09-19" },
+  "AXA-TEST": { pass: "0000", expire: "2026-09-13" }
+};
+function C(){
+  let key=document.getElementById('k').value.trim();
+  let pass=document.getElementById('p').value.trim();
+  let err=document.getElementById('e');
+  if(!KEYS[key]){err.innerText="❌ Invalid Key!";return;}
+  if(KEYS[key].pass!==pass){err.innerText="❌ Wrong Password!";return;}
+  let today=new Date();today.setHours(0,0,0,0);
+  let expDate=new Date(KEYS[key].expire);
+  if(today>expDate){err.innerText="⛔ Key Expired on "+KEYS[key].expire;return;}
+  let daysLeft=Math.ceil((expDate-today)/(1000*60*60*24));
+  localStorage.setItem('axa','ok');localStorage.setItem('axa_key',key);localStorage.setItem('axa_exp',KEYS[key].expire);localStorage.setItem('axa_days',daysLeft);
+  showPanel();
+}
+function showPanel(){
+  document.getElementById('L').style.display='none';
+  document.getElementById('P').style.display='block';
+  document.getElementById('info').innerText="Key: "+localStorage.getItem('axa_key')+" | Exp: "+localStorage.getItem('axa_exp')+" ("+localStorage.getItem('axa_days')+" Days Left)";
+}
+if(localStorage.getItem('axa')=='ok'){
+  let exp=new Date(localStorage.getItem('axa_exp'));let today=new Date();today.setHours(0,0,0,0);
+  if(today<=exp){showPanel();}else{localStorage.clear();}
 }
 </script>
 </body>
