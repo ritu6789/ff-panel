@@ -1,72 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AXA VIP PANEL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{background:#060606;color:#fff;font-family:Arial;text-align:center;margin:0;padding:0}
-.card{background:#111;border:1px solid #00ff88;border-radius:12px;padding:15px;margin:10px}
-.btn{width:100%;padding:12px;margin:6px 0;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:8px;cursor:pointer;font-weight:bold}
-.btn.active{background:#00ff88;color:#000;border-color:#00ff88}
-.main-btn{background:#00ff88;color:#000;padding:15px 30px;border:none;border-radius:10px;font-weight:bold;font-size:18px;margin:10px;cursor:pointer}
-#L{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:flex;justify-content:center;align-items:center}
+body{background:#000;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif}
+.box{border:2px solid #00ff7f;border-radius:20px;padding:30px;width:85%;max-width:350px;background:#0a0a0a;text-align:center}
+h1{color:#00ff7f}
+input{width:100%;padding:14px;margin:10px 0;background:#000;border:1px solid #333;color:#fff;border-radius:10px;box-sizing:border-box}
+button{width:100%;padding:14px;background:#00ff7f;border:0;border-radius:10px;font-weight:bold;font-size:16px}
 </style>
 </head>
 <body>
-
-<!-- LOGIN SCREEN - PASSWORD LOCK -->
-<div id="L">
-<div style="background:#111;border:2px solid #00ff88;padding:25px;border-radius:15px;width:85%;max-width:320px">
-<h2 style="color:#00ff88">AXA VIP</h2>
-<input id="k" placeholder="Enter Key (e.g. AXA-VIP)" style="width:90%;padding:12px;margin:8px 0;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<input id="p" type="password" placeholder="Password" style="width:90%;padding:12px;margin:8px 0;border-radius:6px;border:1px solid #333;background:#000;color:#fff">
-<button onclick="C()" style="width:95%;padding:12px;background:#00ff88;color:#000;font-weight:bold;border:none;border-radius:8px;cursor:pointer">LOGIN</button>
-<p id="e" style="color:#ff4444"></p>
-<p style="color:#666;font-size:11px;margin-top:10px">Key: AXA-VIP | Pass: 9999</p>
+<div class="box">
+<h1>AXA VIP</h1>
+<input id="k" placeholder="Enter Key (e.g. AXA-VIP)">
+<input id="p" type="password" placeholder="Password">
+<button onclick="login()">LOGIN</button>
 </div>
-</div>
-
-<!-- MAIN PANEL -->
-<div style="padding:10px">
-<h2 style="color:#00ff88">🔥 AXA PANEL V2 🔥</h2>
-<p style="color:#666;font-size:12px">Status: <span style="color:#00ff88">● Online</span> | <a href="?logout" style="color:#ff4444;text-decoration:none">Logout</a></p>
-
-<div class="card"><h4 style="color:#00ff88;margin:5px">🎯 Aimbot Settings</h4>
-<button class="btn" onclick="T(this)">🎯 Aimbot Head - OFF</button>
-<button class="btn" onclick="T(this)">🎯 Aimbot Neck - OFF</button>
-<button class="btn" onclick="T(this)">🎯 Aim Lock - OFF</button>
-</div>
-
-<div class="card"><h4 style="color:#00ff88;margin:5px">👁️ ESP Settings</h4>
-<button class="btn" onclick="T(this)">👁️ ESP Line - OFF</button>
-<button class="btn" onclick="T(this)">👁️ ESP Box - OFF</button>
-<button class="btn" onclick="T(this)">👁️ ESP Name - OFF</button>
-</div>
-
-<button class="main-btn" onclick="alert('AXA VIP INJECTED SUCCESSFULLY!')">INJECT AXA VIP</button>
-</div>
-
 <script>
-// YAHAN APNE KEYS AUR PASSWORD SET KAR
-var K={"AXA-7392":"7392","AXA-FREE":"0000","AXA-VIP":"9999","AXA-TEST":"1234"};
-
-function C(){
-  var a=document.getElementById('k').value.trim();
-  var b=document.getElementById('p').value.trim();
-  if(K[a] && K[a]==b){
-    localStorage.setItem('axa','ok');
-    document.getElementById('L').style.display='none';
-  } else {
-    document.getElementById('e').innerText='Wrong Key or Password!';
-  }
+function login(){
+if(document.getElementById('k').value=='AXA-VIP' && document.getElementById('p').value=='9999'){
+localStorage.setItem('axa','ok');
+location.href='panel.html';
+}else{alert('Wrong Key or Password');}
 }
-function T(el){
-  el.classList.toggle('active');
-  if(el.classList.contains('active')){el.innerText=el.innerText.replace('OFF','ON')}else{el.innerText=el.innerText.replace('ON','OFF')}
-}
-function logout(){localStorage.removeItem('axa');location.reload()}
-if(location.search.includes('logout')){localStorage.removeItem('axa');}
-if(localStorage.getItem('axa')=='ok'){document.getElementById('L').style.display='none';}
 </script>
 </body>
 </html>
